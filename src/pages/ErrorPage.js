@@ -7,8 +7,7 @@ const ErrorPage = () => {
         <section>
             <h1>404</h1>
             <h3> Sorry , the page you tried cannot be found</h3>
-            <Link to="/"> Back Home </Link>
-
+            <Link to="/" class="btn"> Back Home </Link>
         </section>
     </Wrapper>
   )
