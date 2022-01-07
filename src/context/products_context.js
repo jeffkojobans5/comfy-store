@@ -15,6 +15,10 @@ import {
 
 const initialState = {
   isSidebarOpen : false,
+  products_loading : false,
+  products_error : false,
+  products : [],
+  featured_products : [],
 }
 
 const ProductsContext = React.createContext()
@@ -31,16 +35,18 @@ export const ProductsProvider = ({ children }) => {
   }
   
   const fetchProducts = () => {
+    dispatch({ type : GET_PRODUCTS_BEGIN }) 
     axios.get(url).then((response)=> {
       console.log(response)
+      dispatch({ type : GET_PRODUCTS_SUCCESS , payload : response.data }) 
     }).catch((error)=>{
-      console.log(error)
+      dispatch({ type : GET_PRODUCTS_ERROR })
     })
   }
   
   useEffect(()=>{
       fetchProducts()
-  })
+  },[])
 
 
   return (
