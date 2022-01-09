@@ -37,7 +37,6 @@ export const ProductsProvider = ({ children }) => {
   const fetchProducts = () => {
     dispatch({ type : GET_PRODUCTS_BEGIN }) 
     axios.get(url).then((response)=> {
-      console.log(response)
       dispatch({ type : GET_PRODUCTS_SUCCESS , payload : response.data }) 
     }).catch((error)=>{
       dispatch({ type : GET_PRODUCTS_ERROR })
@@ -47,7 +46,6 @@ export const ProductsProvider = ({ children }) => {
   useEffect(()=>{
       fetchProducts()
   },[])
-
 
   return (
     <ProductsContext.Provider value={{ ...state , openSidebar , closeSidebar }}>
